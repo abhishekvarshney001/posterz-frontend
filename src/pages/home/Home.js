@@ -20,7 +20,7 @@ function Home() {
     );
 
     // setCategories(categoryResponce.data.data)
-    settopProducts(topProductResponce.data.data);
+    settopProducts(topProductResponce?.data?.data);
   }
 
   useEffect(() => {

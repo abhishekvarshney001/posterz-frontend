@@ -20,8 +20,8 @@ function ProductDetail() {
     const productResponce = await axiosClient.get(
       `/products?filters[key][$eq]=${params.productId}&populate=*`
     );
-    if (productResponce.data.data.length > 0) {
-      setProduct(productResponce.data.data[0]);
+    if (productResponce?.data?.data?.length > 0) {
+      setProduct(productResponce?.data?.data[0]);
     }
   }
 
@@ -44,12 +44,12 @@ function ProductDetail() {
       <div className="container">
         <div className="product-layout">
           <div className="product-img" >
-            <img src={product?.attributes.image.data.attributes.url} alt="Image" id="img"/>
+            <img src={product?.attributes?.image?.data?.attributes?.url} alt="Image" id="img"/>
           </div>
           <div className="product-info">
-            <h1 className="heading">{product?.attributes.title}</h1>
-            <h3 className="price">₹ {product?.attributes.price}</h3>
-            <p className="discription">{product?.attributes.desc}</p>
+            <h1 className="heading">{product?.attributes?.title}</h1>
+            <h3 className="price">₹ {product?.attributes?.price}</h3>
+            <p className="discription">{product?.attributes?.desc}</p>
             <div className="cart-options">
               <div className="quantity-selector">
                 <span className="btn decrement" onClick={() => dispatch(removeFromCart(product))}>-</span>

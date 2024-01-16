@@ -9,7 +9,7 @@ function Collection() {
   const navigate = useNavigate();
   const params = useParams();
   const [categoryId, setCategoryId] = useState();
-  const categories = useSelector((state) => state.categoryReducer.categories);
+  const categories = useSelector((state) => state?.categoryReducer?.categories);
   const [products, setProducts] = useState([]);
 
   const sortOptions = [
@@ -23,18 +23,18 @@ function Collection() {
     },
   ];
 
-  const [sortBy, setSortBy] = useState(sortOptions[0].sort);
+  const [sortBy, setSortBy] = useState(sortOptions[0]?.sort);
 
   async function fetchProducts() {
     const url = params.categoryId
       ? `/products?populate=image&filters[category][key][$eq]=${params.categoryId}&sort=${sortBy}`
       : `/products?populate=image&sort=${sortBy}`;
     const response = await axiosClient.get(url);
-    setProducts(response.data.data);
+    setProducts(response?.data?.data);
   }
 
   useEffect(() => {
-    setCategoryId(params.categoryId);
+    setCategoryId(params?.categoryId);
     fetchProducts();
   }, [params, sortBy]);
 
